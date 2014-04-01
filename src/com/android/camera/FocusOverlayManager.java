@@ -63,12 +63,12 @@ public class FocusOverlayManager {
     private static final int RESET_TOUCH_FOCUS_DELAY = 3000;
 
     private int mState = STATE_IDLE;
-    private static final int STATE_IDLE = 0; // Focus is not active.
-    private static final int STATE_FOCUSING = 1; // Focus is in progress.
+    public static final int STATE_IDLE = 0; // Focus is not active.
+    public static final int STATE_FOCUSING = 1; // Focus is in progress.
     // Focus is in progress and the camera should take a picture after focus finishes.
-    private static final int STATE_FOCUSING_SNAP_ON_FINISH = 2;
-    private static final int STATE_SUCCESS = 3; // Focus finishes and succeeds.
-    private static final int STATE_FAIL = 4; // Focus finishes and fails.
+    public static final int STATE_FOCUSING_SNAP_ON_FINISH = 2;
+    public static final int STATE_SUCCESS = 3; // Focus finishes and succeeds.
+    public static final int STATE_FAIL = 4; // Focus finishes and fails.
 
     private boolean mInitialized;
     private boolean mFocusAreaSupported;
@@ -90,6 +90,8 @@ public class FocusOverlayManager {
     Listener mListener;
     private boolean mPreviousMoving;
     private boolean mFocusDefault;
+    private boolean mZslEnabled = false;  //QCom Parameter to disable focus for ZSL
+    private boolean mTouchAFRunning = false;
 
     private FocusUI mUI;
     private final Rect mPreviewRect = new Rect(0, 0, 0, 0);
@@ -201,7 +203,7 @@ public class FocusOverlayManager {
     }
 
     private void lockAeAwbIfNeeded() {
-        if (mLockAeAwbNeeded && !mAeAwbLock) {
+        if (mLockAeAwbNeeded && !mAeAwbLock && !mZslEnabled) {
             mAeAwbLock = true;
             mListener.setFocusParameters();
         }
@@ -380,6 +382,10 @@ public class FocusOverlayManager {
         // Use margin to set the focus indicator to the touched area.
         mUI.setFocusPosition(x, y);
 
+        if (mZslEnabled) {
+            mTouchAFRunning = true;
+        }
+
         // Stop face detection because we want to specify focus and metering area.
         mListener.stopFaceDetection();
 
@@ -447,7 +453,8 @@ public class FocusOverlayManager {
         if (mParameters == null) return Parameters.FOCUS_MODE_AUTO;
         List<String> supportedFocusModes = mParameters.getSupportedFocusModes();
 
-        if (mFocusAreaSupported && !mFocusDefault) {
+        if (mFocusAreaSupported && !mFocusDefault
+                 && !CameraUtil.noFocusModeChangeForTouch()) {
             // Always use autofocus in tap-to-focus.
             mFocusMode = Parameters.FOCUS_MODE_AUTO;
         } else {
@@ -520,6 +527,10 @@ public class FocusOverlayManager {
         // Put focus indicator to the center. clear reset position
         mUI.clearFocus();
         // Initialize mFocusArea.
+        mFocusArea = null;
+        // Initialize mMeteringArea.
+        mMeteringArea = null;
+
         if (mFocusAreaSupported) {
             initializeFocusAreas(mPreviewRect.centerX(), mPreviewRect.centerY());
         }
@@ -528,6 +539,10 @@ public class FocusOverlayManager {
             resetMeteringAreas();
         }
         mFocusDefault = true;
+        if (mTouchAFRunning && mZslEnabled) {
+            mTouchAFRunning = false;
+            mListener.setFocusParameters();
+        }
     }
 
     private void calculateTapArea(int x, int y, float areaMultiple, Rect rect) {
@@ -556,6 +571,10 @@ public class FocusOverlayManager {
         return mState == STATE_SUCCESS || mState == STATE_FAIL;
     }
 
+    public int getCurrentFocusState() {
+        return mState;
+    }
+
     public boolean isFocusingSnapOnFinish() {
         return mState == STATE_FOCUSING_SNAP_ON_FINISH;
     }
@@ -578,8 +597,23 @@ public class FocusOverlayManager {
 
     private boolean needAutoFocusCall() {
         String focusMode = getFocusMode();
-        return !(focusMode.equals(Parameters.FOCUS_MODE_INFINITY)
-                || focusMode.equals(Parameters.FOCUS_MODE_FIXED)
-                || focusMode.equals(Parameters.FOCUS_MODE_EDOF));
+        boolean continuousFocus =
+            CameraUtil.isContinuousFocusNeedsAutoFocusCall()
+            && focusMode.equals(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+        return focusMode.equals(Parameters.FOCUS_MODE_AUTO)
+                || continuousFocus;
     }
+
+    public void setZslEnable(boolean value) {
+        mZslEnabled = value;
+    }
+
+    public boolean isZslEnabled() {
+        return mZslEnabled;
+    }
+
+    public boolean isTouch() {
+        return mTouchAFRunning;
+    }
+
 }

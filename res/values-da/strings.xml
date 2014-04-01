@@ -158,86 +158,81 @@
     <item quantity="one" msgid="2171596356101611086">"Gør albummet tilgængeligt offline."</item>
     <item quantity="other" msgid="4948604338155959389">"Gør albummer tilgængelige offline."</item>
   </plurals>
-    <string name="try_to_set_local_album_available_offline" msgid="2184754031896160755">"Dette element er gemt lokalt og er tilgængeligt offline."</string>
-    <string name="set_label_all_albums" msgid="4581863582996336783">"Alle albummer"</string>
-    <string name="set_label_local_albums" msgid="6698133661656266702">"Lokale albummer"</string>
-    <string name="set_label_mtp_devices" msgid="1283513183744896368">"MTP-enheder"</string>
-    <string name="set_label_picasa_albums" msgid="5356258354953935895">"Picasa-albummer"</string>
-    <string name="free_space_format" msgid="8766337315709161215">"<xliff:g id="BYTES">%s</xliff:g> ledig"</string>
-    <string name="size_below" msgid="2074956730721942260">"<xliff:g id="SIZE">%1$s</xliff:g> eller mindre"</string>
-    <string name="size_above" msgid="5324398253474104087">"<xliff:g id="SIZE">%1$s</xliff:g> eller over"</string>
-    <string name="size_between" msgid="8779660840898917208">"<xliff:g id="MIN_SIZE">%1$s</xliff:g> til <xliff:g id="MAX_SIZE">%2$s</xliff:g>"</string>
-    <string name="Import" msgid="3985447518557474672">"Importer"</string>
-    <string name="import_complete" msgid="3875040287486199999">"Importen er fuldført"</string>
-    <string name="import_fail" msgid="8497942380703298808">"Importen mislykkedes"</string>
-    <string name="camera_connected" msgid="916021826223448591">"Kameraet er tilkoblet."</string>
-    <string name="camera_disconnected" msgid="2100559901676329496">"Kameraet er frakoblet."</string>
-    <string name="click_import" msgid="6407959065464291972">"Tryk her for at importere"</string>
-    <string name="widget_type_album" msgid="6013045393140135468">"Vælg et album"</string>
-    <string name="widget_type_shuffle" msgid="8594622705019763768">"Bland alle billeder"</string>
-    <string name="widget_type_photo" msgid="6267065337367795355">"Vælg et billede"</string>
-    <string name="widget_type" msgid="1364653978966343448">"Vælg billeder"</string>
-    <string name="slideshow_dream_name" msgid="6915963319933437083">"Diasshow"</string>
-    <string name="albums" msgid="7320787705180057947">"Albummer"</string>
-    <string name="times" msgid="2023033894889499219">"Tidspunkter"</string>
-    <string name="locations" msgid="6649297994083130305">"Placering"</string>
-    <string name="people" msgid="4114003823747292747">"Personer"</string>
-    <string name="tags" msgid="5539648765482935955">"Tags"</string>
-    <string name="group_by" msgid="4308299657902209357">"Grupper efter"</string>
-    <string name="settings" msgid="1534847740615665736">"Indstillinger"</string>
-    <string name="add_account" msgid="4271217504968243974">"Tilføj konto"</string>
-    <string name="folder_camera" msgid="4714658994809533480">"Kamera"</string>
-    <string name="folder_download" msgid="7186215137642323932">"Download"</string>
-    <string name="folder_edited_online_photos" msgid="6278215510236800181">"Redigerede onlinefotos"</string>
-    <string name="folder_imported" msgid="2773581395524747099">"Importeret"</string>
-    <string name="folder_screenshot" msgid="7200396565864213450">"Skærmbillede"</string>
-    <string name="help" msgid="7368960711153618354">"Hjælp"</string>
-    <string name="no_external_storage_title" msgid="2408933644249734569">"Intet lager"</string>
-    <string name="no_external_storage" msgid="95726173164068417">"Intet tilgængeligt eksternt lager"</string>
-    <string name="switch_photo_filmstrip" msgid="8227883354281661548">"Filmstrip-visning"</string>
-    <string name="switch_photo_grid" msgid="3681299459107925725">"Gittervisning"</string>
-    <string name="switch_photo_fullscreen" msgid="8360489096099127071">"Se i fuld skærm"</string>
-    <string name="trimming" msgid="9122385768369143997">"Beskæring"</string>
-    <string name="muting" msgid="5094925919589915324">"Slår lyden fra"</string>
-    <string name="please_wait" msgid="7296066089146487366">"Vent"</string>
-    <string name="save_into" msgid="9155488424829609229">"Videoen gemmes i <xliff:g id="ALBUM_NAME">%1$s</xliff:g>..."</string>
-    <string name="trim_too_short" msgid="751593965620665326">"Der kan ikke beskæres – målvideoen er for kort"</string>
-    <string name="pano_progress_text" msgid="1586851614586678464">"Panoramabilledet gengives"</string>
-    <string name="save" msgid="613976532235060516">"Gem"</string>
-    <string name="ingest_scanning" msgid="1062957108473988971">"Indhold scannes..."</string>
-  <plurals name="ingest_number_of_items_scanned">
-    <item quantity="zero" msgid="2623289390474007396">"%1$d elementer er scannet"</item>
-    <item quantity="one" msgid="4340019444460561648">"%1$d element er scannet"</item>
-    <item quantity="other" msgid="3138021473860555499">"%1$d elementer er scannet"</item>
-  </plurals>
-    <string name="ingest_sorting" msgid="1028652103472581918">"Sorterer..."</string>
-    <string name="ingest_scanning_done" msgid="8911916277034483430">"Scanning er fuldført"</string>
-    <string name="ingest_importing" msgid="7456633398378527611">"Importerer..."</string>
-    <string name="ingest_empty_device" msgid="2010470482779872622">"Denne enhed indeholder intet indhold, der kan importeres."</string>
-    <string name="ingest_no_device" msgid="3054128223131382122">"Der er ingen MTP-enhed tilsluttet"</string>
-    <string name="camera_error_title" msgid="6484667504938477337">"Kamerafejl"</string>
-    <string name="cannot_connect_camera" msgid="955440687597185163">"Der kan ikke oprettes forbindelse til kameraet."</string>
-    <string name="camera_disabled" msgid="8923911090533439312">"Kameraet er deaktiveret på grund af sikkerhedspolitikker."</string>
-    <string name="camera_label" msgid="6346560772074764302">"Kamera"</string>
-    <string name="video_camera_label" msgid="2899292505526427293">"Videokamera"</string>
-    <string name="wait" msgid="8600187532323801552">"Vent..."</string>
-    <string name="no_storage" product="nosdcard" msgid="7335975356349008814">"Isæt USB-lager, før du tager kameraet i brug."</string>
-    <string name="no_storage" product="default" msgid="5137703033746873624">"Indsæt et SD-kort, før kameraet tages i brug."</string>
-    <string name="preparing_sd" product="nosdcard" msgid="6104019983528341353">"Forbereder USB-lager…"</string>
-    <string name="preparing_sd" product="default" msgid="2914969119574812666">"Forbereder SD-kort ..."</string>
-    <string name="access_sd_fail" product="nosdcard" msgid="8147993984037859354">"Der kunne ikke fås adgang til USB-lagring."</string>
-    <string name="access_sd_fail" product="default" msgid="1584968646870054352">"Der kunne ikke fås adgang til SD-kortet."</string>
-    <string name="review_cancel" msgid="8188009385853399254">"ANNULLER"</string>
-    <string name="review_ok" msgid="1156261588693116433">"FÆRDIG"</string>
-    <string name="time_lapse_title" msgid="4360632427760662691">"Optagelse af tidsforløb"</string>
-    <string name="pref_camera_id_title" msgid="4040791582294635851">"Vælg kamera"</string>
-    <string name="pref_camera_id_entry_back" msgid="5142699735103692485">"Bagest"</string>
-    <string name="pref_camera_id_entry_front" msgid="5668958706828733669">"Forrest"</string>
-    <string name="pref_camera_recordlocation_title" msgid="371208839215448917">"Gem placering"</string>
-    <string name="pref_camera_timer_title" msgid="3105232208281893389">"Nedtællingsur"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for pref_camera_timer_entry:other (6455381617076792481) -->
-    <!-- no translation found for pref_camera_timer_sound_default (7066624532144402253) -->
+    <!-- no translation found for pref_camera_timer_sound_default (6225207881203007747) -->
+    <skip />
+    <string name="pref_camera_timer_sound_title" msgid="9036987234878551217">"Nedtællingsbip"</string>
+    <string name="setting_off" msgid="6782191065550276632">"Fra"</string>
+    <string name="setting_on" msgid="9086728135773197891">"Til"</string>
+    <string name="pref_video_quality_title" msgid="5887153490982738588">"Videokvalitet"</string>
+    <string name="pref_video_time_lapse_frame_interval_title" msgid="4975260837607993569">"Tidsforløb"</string>
+    <string name="pref_camera_settings_category" msgid="4274141528139077830">"Kameraindstillinger"</string>
+    <string name="pref_camcorder_settings_category" msgid="3553148484755353397">"Indstillinger for Videokamera"</string>
+    <string name="pref_camera_picturesize_title" msgid="686045304547541815">"Billedstørrelse"</string>
+    <string name="pref_camera_picturesize_entry_13mp" msgid="6728485576074234195">"13 megapixels"</string>
+    <string name="pref_camera_picturesize_entry_8mp" msgid="7088352012301633667">"8 megapixels"</string>
+    <string name="pref_camera_picturesize_entry_5mp" msgid="1501745661448065284">"5 megapixels"</string>
+    <string name="pref_camera_picturesize_entry_4mp" msgid="4786178543089540678">"4 megapixels"</string>
+    <string name="pref_camera_picturesize_entry_3mp" msgid="140799231761236311">"3 megapixel"</string>
+    <string name="pref_camera_picturesize_entry_2mp" msgid="450006451326859328">"2 megapixels"</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide" msgid="1877997036497332813">"2 megapixels (16:9)"</string>
+    <string name="pref_camera_picturesize_entry_1_5mp" msgid="7089801019442294745">"1,5 megapixels"</string>
+    <string name="pref_camera_picturesize_entry_1_3mp" msgid="3451742533756821502">"1,3 megapixels"</string>
+    <string name="pref_camera_picturesize_entry_1mp" msgid="5043732005295894167">"1 megapixel"</string>
+    <string name="pref_camera_picturesize_entry_vga" msgid="7387786033708903628">"VGA"</string>
+    <string name="pref_camera_picturesize_entry_qvga" msgid="6134562622041084167">"QVGA"</string>
+    <string name="pref_camera_focusmode_title" msgid="3637702747984180030">"Fokustilstand"</string>
+    <string name="pref_camera_focusmode_entry_auto" msgid="8977409813328199501">"Automatisk"</string>
+    <string name="pref_camera_focusmode_entry_infinity" msgid="3887667853236656322">"Uendeligt"</string>
+    <string name="pref_camera_focusmode_entry_macro" msgid="7632276686726851426">"Makro"</string>
+    <string name="pref_camera_focusmode_label_auto" msgid="4884418453600317694">"AUTOMATISK"</string>
+    <string name="pref_camera_focusmode_label_infinity" msgid="1673352016120343314">"UENDELIGT"</string>
+    <string name="pref_camera_focusmode_label_macro" msgid="5065639298027996399">"MAKRO"</string>
+    <string name="pref_camera_flashmode_title" msgid="8363803841022314574">"Blitztilstand"</string>
+    <string name="pref_camera_flashmode_label" msgid="5852483713534762800">"BLITZTILSTAND"</string>
+    <string name="pref_camera_flashmode_entry_auto" msgid="4211992591841657014">"Automatisk"</string>
+    <string name="pref_camera_flashmode_entry_on" msgid="3519831202665377698">"Til"</string>
+    <string name="pref_camera_flashmode_entry_off" msgid="8861322265566617357">"Fra"</string>
+    <string name="pref_camera_flashmode_label_auto" msgid="2309144918900450379">"AUTOMATISK BLITZ"</string>
+    <string name="pref_camera_flashmode_label_on" msgid="373595517770024934">"BLITZ TIL"</string>
+    <string name="pref_camera_flashmode_label_off" msgid="7175863901446001441">"BLITZ FRA"</string>
+    <string name="pref_camera_whitebalance_title" msgid="7962809566612868179">"Hvidbalance"</string>
+    <string name="pref_camera_whitebalance_label" msgid="7370366644738746700">"HVIDBALANCE"</string>
+    <string name="pref_camera_whitebalance_entry_auto" msgid="1390631794449502796">"Automatisk"</string>
+    <string name="pref_camera_whitebalance_entry_incandescent" msgid="1140391575294372706">"Blødt lys"</string>
+    <string name="pref_camera_whitebalance_entry_daylight" msgid="757833578153467254">"Dagslys"</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="5157027611220790970">"Hårdt lys"</string>
+    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3569589102226796875">"Skyet"</string>
+    <string name="pref_camera_whitebalance_label_auto" msgid="4305837287360485369">"AUTOMATISK"</string>
+    <string name="pref_camera_whitebalance_label_incandescent" msgid="2860805668879945185">"BLØDT LYS"</string>
+    <string name="pref_camera_whitebalance_label_daylight" msgid="4562002095198912409">"DAGSLYS"</string>
+    <string name="pref_camera_whitebalance_label_fluorescent" msgid="10552295745391742">"HÅRDT LYS"</string>
+    <string name="pref_camera_whitebalance_label_cloudy" msgid="4880793739075193336">"SKYET"</string>
+    <string name="pref_camera_scenemode_title" msgid="5709932164781367066">"Motivtilstand"</string>
+    <string name="pref_camera_scenemode_entry_auto" msgid="9205644316260850379">"Automatisk"</string>
+    <string name="pref_camera_scenemode_entry_hdr_plus" msgid="6759085555519758794">"HDR+"</string>
+    <string name="pref_camera_scenemode_entry_hdr" msgid="3098836808080630955">"HDR"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_on" msgid="1096746750342289067">"HDR+ TIL"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_off" msgid="2668770361856397834">"HDR+ FRA"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_on" msgid="5232394324298489502">"HDR TIL"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_off" msgid="7694606461440250206">"HDR FRA"</string>
+    <string name="pref_camera_scenemode_entry_action" msgid="5753183620959062015">"Action"</string>
+    <string name="pref_camera_scenemode_entry_night" msgid="3468037364159759991">"Nat"</string>
+    <string name="pref_camera_scenemode_entry_sunset" msgid="5884302914893488509">"Solnedgang"</string>
+    <string name="pref_camera_scenemode_entry_party" msgid="401232668169066415">"Fest"</string>
+    <string name="pref_camera_scenemode_label_auto" msgid="2874586883608401615">"INGEN"</string>
+    <string name="pref_camera_scenemode_label_action" msgid="1822814017595414923">"ACTION"</string>
+    <string name="pref_camera_scenemode_label_night" msgid="7764371228088101131">"NAT"</string>
+    <string name="pref_camera_scenemode_label_sunset" msgid="3443610538453611123">"SOLNEDGANG"</string>
+    <string name="pref_camera_scenemode_label_party" msgid="917499272505930322">"FEST"</string>
+    <string name="pref_camera_countdown_label_off" msgid="3986433580620011481">"SLÅ NEDTÆLLINGSUR FRA"</string>
+    <string name="pref_camera_countdown_label_one" msgid="7647972711796868848">"1 SEKUND"</string>
+    <string name="pref_camera_countdown_label_three" msgid="3154170918067103541">"3 SEKUNDER"</string>
+    <string name="pref_camera_countdown_label_ten" msgid="4372650985906500604">"10 SEKUNDER"</string>
+    <string name="pref_camera_countdown_label_fifteen" msgid="8469955900530268867">"15 SEKUNDER"</string>
+    <string name="not_selectable_in_scene_mode" msgid="3260801086980522611">"Denne indstilling kan ikke vælges i motivtilstand."</string>
+    <string name="pref_exposure_title" msgid="7525751789152582800">"Eksponering"</string>
+    <string name="pref_exposure_label" msgid="2604738602400261218">"EKSPONERING"</string>
+    <!-- no translation found for pref_camera_hdr_default (5054955236904902318) -->
     <skip />
     <string name="pref_camera_timer_sound_title" msgid="2469008631966169105">"Beep under nedtællingen"</string>
     <string name="setting_off" msgid="4480039384202951946">"Fra"</string>

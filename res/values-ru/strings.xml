@@ -241,48 +241,79 @@
   </plurals>
     <!-- no translation found for pref_camera_timer_sound_default (7066624532144402253) -->
     <skip />
-    <string name="pref_camera_timer_sound_title" msgid="2469008631966169105">"Сигнал"</string>
-    <string name="setting_off" msgid="4480039384202951946">"Выкл."</string>
-    <string name="setting_on" msgid="8602246224465348901">"Вкл."</string>
-    <string name="pref_video_quality_title" msgid="8245379279801096922">"Качество видео"</string>
-    <string name="pref_video_quality_entry_high" msgid="8664038216234805914">"Высокое качество"</string>
-    <string name="pref_video_quality_entry_low" msgid="7258507152393173784">"Низкое качество"</string>
-    <string name="pref_video_time_lapse_frame_interval_title" msgid="6245716906744079302">"Замедленная съемка"</string>
-    <string name="pref_camera_settings_category" msgid="2576236450859613120">"Настройки камеры"</string>
-    <string name="pref_camcorder_settings_category" msgid="460313486231965141">"Настройки видеокамеры"</string>
-    <string name="pref_camera_picturesize_title" msgid="4333724936665883006">"Размер фото"</string>
-    <string name="pref_camera_picturesize_entry_8mp" msgid="259953780932849079">"8 Мпикс."</string>
-    <string name="pref_camera_picturesize_entry_5mp" msgid="2882928212030661159">"5 Мпикс."</string>
-    <string name="pref_camera_picturesize_entry_3mp" msgid="741415860337400696">"3 Мпикс."</string>
-    <string name="pref_camera_picturesize_entry_2mp" msgid="1753709802245460393">"2 Мпикс."</string>
-    <string name="pref_camera_picturesize_entry_1_3mp" msgid="829109608140747258">"1,3 Мпикс."</string>
-    <string name="pref_camera_picturesize_entry_1mp" msgid="1669725616780375066">"1 Мпикс."</string>
-    <string name="pref_camera_picturesize_entry_vga" msgid="806934254162981919">"640 х 480 пикс."</string>
-    <string name="pref_camera_picturesize_entry_qvga" msgid="8576186463069770133">"320 x 240 пикс."</string>
-    <string name="pref_camera_focusmode_title" msgid="2877248921829329127">"Режим фокусировки"</string>
-    <string name="pref_camera_focusmode_entry_auto" msgid="7374820710300362457">"Авто"</string>
-    <string name="pref_camera_focusmode_entry_infinity" msgid="3413922419264967552">"Бесконечность"</string>
-    <string name="pref_camera_focusmode_entry_macro" msgid="4424489110551866161">"Макро"</string>
-    <string name="pref_camera_flashmode_title" msgid="2287362477238791017">"Режим вспышки"</string>
-    <string name="pref_camera_flashmode_entry_auto" msgid="7288383434237457709">"Авто"</string>
-    <string name="pref_camera_flashmode_entry_on" msgid="5330043918845197616">"Вкл."</string>
-    <string name="pref_camera_flashmode_entry_off" msgid="867242186958805761">"Выкл."</string>
-    <string name="pref_camera_whitebalance_title" msgid="677420930596673340">"Баланс белого"</string>
-    <string name="pref_camera_whitebalance_entry_auto" msgid="6580665476983469293">"Авто"</string>
-    <string name="pref_camera_whitebalance_entry_incandescent" msgid="8856667786449549938">"Лампа накаливания"</string>
-    <string name="pref_camera_whitebalance_entry_daylight" msgid="2534757270149561027">"Солнечный свет"</string>
-    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="2435332872847454032">"Лампа дн. света"</string>
-    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3531996716997959326">"Пасмурный день"</string>
-    <string name="pref_camera_scenemode_title" msgid="1420535844292504016">"Режим съемки"</string>
-    <string name="pref_camera_scenemode_entry_auto" msgid="7113995286836658648">"Авто"</string>
-    <string name="pref_camera_scenemode_entry_hdr" msgid="2923388802899511784">"Эффект HDR"</string>
-    <string name="pref_camera_scenemode_entry_action" msgid="616748587566110484">"Спорт"</string>
-    <string name="pref_camera_scenemode_entry_night" msgid="7606898503102476329">"Ночь"</string>
-    <string name="pref_camera_scenemode_entry_sunset" msgid="181661154611507212">"Закат"</string>
-    <string name="pref_camera_scenemode_entry_party" msgid="907053529286788253">"Вечеринка"</string>
-    <string name="not_selectable_in_scene_mode" msgid="2970291701448555126">"Недоступно в режиме съемки"</string>
-    <string name="pref_exposure_title" msgid="1229093066434614811">"Экспозиция"</string>
-    <!-- no translation found for pref_camera_hdr_default (1336869406134365882) -->
+    <string name="pref_camera_timer_sound_title" msgid="9036987234878551217">"Сигнал"</string>
+    <string name="setting_off" msgid="6782191065550276632">"Выкл."</string>
+    <string name="setting_on" msgid="9086728135773197891">"Вкл."</string>
+    <string name="pref_video_quality_title" msgid="5887153490982738588">"Качество видео"</string>
+    <string name="pref_video_time_lapse_frame_interval_title" msgid="4975260837607993569">"Замедленная съемка"</string>
+    <string name="pref_camera_settings_category" msgid="4274141528139077830">"Настройки камеры"</string>
+    <string name="pref_camcorder_settings_category" msgid="3553148484755353397">"Настройки видеокамеры"</string>
+    <string name="pref_camera_picturesize_title" msgid="686045304547541815">"Размер изображения"</string>
+    <string name="pref_camera_picturesize_entry_13mp" msgid="6728485576074234195">"13 Мпикс."</string>
+    <string name="pref_camera_picturesize_entry_8mp" msgid="7088352012301633667">"8 Мпикс."</string>
+    <string name="pref_camera_picturesize_entry_5mp" msgid="1501745661448065284">"5 Мпикс."</string>
+    <string name="pref_camera_picturesize_entry_4mp" msgid="4786178543089540678">"4 Мпикс."</string>
+    <string name="pref_camera_picturesize_entry_3mp" msgid="140799231761236311">"3 Мпикс."</string>
+    <string name="pref_camera_picturesize_entry_2mp" msgid="450006451326859328">"2 Мпикс."</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide" msgid="1877997036497332813">"2 Мпикс. (16:9)"</string>
+    <string name="pref_camera_picturesize_entry_1_5mp" msgid="7089801019442294745">"1,5 Мпикс."</string>
+    <string name="pref_camera_picturesize_entry_1_3mp" msgid="3451742533756821502">"1,3 Мпикс."</string>
+    <string name="pref_camera_picturesize_entry_1mp" msgid="5043732005295894167">"1 Мпикс."</string>
+    <string name="pref_camera_picturesize_entry_vga" msgid="7387786033708903628">"640 х 480 пикс."</string>
+    <string name="pref_camera_picturesize_entry_qvga" msgid="6134562622041084167">"320 x 240 пикс."</string>
+    <string name="pref_camera_focusmode_title" msgid="3637702747984180030">"Режим фокусировки"</string>
+    <string name="pref_camera_focusmode_entry_auto" msgid="8977409813328199501">"Авто"</string>
+    <string name="pref_camera_focusmode_entry_infinity" msgid="3887667853236656322">"Бесконечность"</string>
+    <string name="pref_camera_focusmode_entry_macro" msgid="7632276686726851426">"Макросъемка"</string>
+    <string name="pref_camera_focusmode_label_auto" msgid="4884418453600317694">"АВТО"</string>
+    <string name="pref_camera_focusmode_label_infinity" msgid="1673352016120343314">"БЕСКОНЕЧНОСТЬ"</string>
+    <string name="pref_camera_focusmode_label_macro" msgid="5065639298027996399">"МАКРОСЪЕМКА"</string>
+    <string name="pref_camera_flashmode_title" msgid="8363803841022314574">"Режим вспышки"</string>
+    <string name="pref_camera_flashmode_label" msgid="5852483713534762800">"РЕЖИМ ВСПЫШКИ"</string>
+    <string name="pref_camera_flashmode_entry_auto" msgid="4211992591841657014">"Авто"</string>
+    <string name="pref_camera_flashmode_entry_on" msgid="3519831202665377698">"Вкл."</string>
+    <string name="pref_camera_flashmode_entry_off" msgid="8861322265566617357">"Выкл."</string>
+    <string name="pref_camera_flashmode_label_auto" msgid="2309144918900450379">"АВТО"</string>
+    <string name="pref_camera_flashmode_label_on" msgid="373595517770024934">"ВКЛ"</string>
+    <string name="pref_camera_flashmode_label_off" msgid="7175863901446001441">"ВЫКЛ"</string>
+    <string name="pref_camera_whitebalance_title" msgid="7962809566612868179">"Баланс белого"</string>
+    <string name="pref_camera_whitebalance_label" msgid="7370366644738746700">"БАЛАНС БЕЛОГО"</string>
+    <string name="pref_camera_whitebalance_entry_auto" msgid="1390631794449502796">"Авто"</string>
+    <string name="pref_camera_whitebalance_entry_incandescent" msgid="1140391575294372706">"Лампа накаливания"</string>
+    <string name="pref_camera_whitebalance_entry_daylight" msgid="757833578153467254">"Солнечный свет"</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="5157027611220790970">"Лампа дневного света"</string>
+    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3569589102226796875">"Пасмурный день"</string>
+    <string name="pref_camera_whitebalance_label_auto" msgid="4305837287360485369">"АВТО"</string>
+    <string name="pref_camera_whitebalance_label_incandescent" msgid="2860805668879945185">"ЛАМПА НАКАЛИВАНИЯ"</string>
+    <string name="pref_camera_whitebalance_label_daylight" msgid="4562002095198912409">"СОЛНЕЧНЫЙ СВЕТ"</string>
+    <string name="pref_camera_whitebalance_label_fluorescent" msgid="10552295745391742">"ЛАМПА ДНЕВНОГО СВЕТА"</string>
+    <string name="pref_camera_whitebalance_label_cloudy" msgid="4880793739075193336">"ПАСМУРНЫЙ ДЕНЬ"</string>
+    <string name="pref_camera_scenemode_title" msgid="5709932164781367066">"Режим съемки"</string>
+    <string name="pref_camera_scenemode_entry_auto" msgid="9205644316260850379">"Авто"</string>
+    <string name="pref_camera_scenemode_entry_hdr_plus" msgid="6759085555519758794">"HDR+"</string>
+    <string name="pref_camera_scenemode_entry_hdr" msgid="3098836808080630955">"HDR"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_on" msgid="1096746750342289067">"ВКЛЮЧИТЬ HDR+"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_off" msgid="2668770361856397834">"ОТКЛЮЧИТЬ HDR+"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_on" msgid="5232394324298489502">"ВКЛЮЧИТЬ HDR"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_off" msgid="7694606461440250206">"ОТКЛЮЧИТЬ HDR"</string>
+    <string name="pref_camera_scenemode_entry_action" msgid="5753183620959062015">"В движении"</string>
+    <string name="pref_camera_scenemode_entry_night" msgid="3468037364159759991">"Ночная съемка"</string>
+    <string name="pref_camera_scenemode_entry_sunset" msgid="5884302914893488509">"Закат"</string>
+    <string name="pref_camera_scenemode_entry_party" msgid="401232668169066415">"Вечеринка"</string>
+    <string name="pref_camera_scenemode_label_auto" msgid="2874586883608401615">"НЕТ"</string>
+    <string name="pref_camera_scenemode_label_action" msgid="1822814017595414923">"В ДВИЖЕНИИ"</string>
+    <string name="pref_camera_scenemode_label_night" msgid="7764371228088101131">"НОЧНАЯ СЪЕМКА"</string>
+    <string name="pref_camera_scenemode_label_sunset" msgid="3443610538453611123">"ЗАКАТ"</string>
+    <string name="pref_camera_scenemode_label_party" msgid="917499272505930322">"ВЕЧЕРИНКА"</string>
+    <string name="pref_camera_countdown_label_off" msgid="3986433580620011481">"АВТОСПУСК ОТКЛЮЧЕН"</string>
+    <string name="pref_camera_countdown_label_one" msgid="7647972711796868848">"1 СЕКУНДА"</string>
+    <string name="pref_camera_countdown_label_three" msgid="3154170918067103541">"3 СЕКУНДЫ"</string>
+    <string name="pref_camera_countdown_label_ten" msgid="4372650985906500604">"10 СЕКУНД"</string>
+    <string name="pref_camera_countdown_label_fifteen" msgid="8469955900530268867">"15 СЕКУНД"</string>
+    <string name="not_selectable_in_scene_mode" msgid="3260801086980522611">"Недоступно в режиме съемки"</string>
+    <string name="pref_exposure_title" msgid="7525751789152582800">"Выдержка"</string>
+    <string name="pref_exposure_label" msgid="2604738602400261218">"ВЫДЕРЖКА"</string>
+    <!-- no translation found for pref_camera_hdr_default (5054955236904902318) -->
     <skip />
     <string name="dialog_ok" msgid="6263301364153382152">"ОК"</string>
     <string name="spaceIsLow_content" product="nosdcard" msgid="4401325203349203177">"Место на USB-накопителе заканчивается. Измените настройки качества или удалите ненужные изображения и другие файлы."</string>

@@ -242,7 +242,81 @@
     <item quantity="one" msgid="1654523400981245448">"Sekunde 1"</item>
     <item quantity="other" msgid="6455381617076792481">"Sekunde %d"</item>
   </plurals>
-    <!-- no translation found for pref_camera_timer_sound_default (7066624532144402253) -->
+    <!-- no translation found for pref_camera_timer_sound_default (6225207881203007747) -->
+    <skip />
+    <string name="pref_camera_timer_sound_title" msgid="9036987234878551217">"Toa mlio inapohesabu"</string>
+    <string name="setting_off" msgid="6782191065550276632">"Imezimwa"</string>
+    <string name="setting_on" msgid="9086728135773197891">"Imewashwa"</string>
+    <string name="pref_video_quality_title" msgid="5887153490982738588">"Ubora wa video"</string>
+    <string name="pref_video_time_lapse_frame_interval_title" msgid="4975260837607993569">"Kupita kwa muda"</string>
+    <string name="pref_camera_settings_category" msgid="4274141528139077830">"Mipangilio ya kamera"</string>
+    <string name="pref_camcorder_settings_category" msgid="3553148484755353397">"Mipangilio ya kamkoda"</string>
+    <string name="pref_camera_picturesize_title" msgid="686045304547541815">"Ukubwa wa picha"</string>
+    <string name="pref_camera_picturesize_entry_13mp" msgid="6728485576074234195">"Megapikseli 13"</string>
+    <string name="pref_camera_picturesize_entry_8mp" msgid="7088352012301633667">"Megapikseli 8"</string>
+    <string name="pref_camera_picturesize_entry_5mp" msgid="1501745661448065284">"Megapikseli 5"</string>
+    <string name="pref_camera_picturesize_entry_4mp" msgid="4786178543089540678">"Megapikseli 4"</string>
+    <string name="pref_camera_picturesize_entry_3mp" msgid="140799231761236311">"Megapikseli 3"</string>
+    <string name="pref_camera_picturesize_entry_2mp" msgid="450006451326859328">"Megapikseli 2"</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide" msgid="1877997036497332813">"Megapikseli 2  (16:9)"</string>
+    <string name="pref_camera_picturesize_entry_1_5mp" msgid="7089801019442294745">"Pikseli Milioni 1.5"</string>
+    <string name="pref_camera_picturesize_entry_1_3mp" msgid="3451742533756821502">"Megapikseli 1.3"</string>
+    <string name="pref_camera_picturesize_entry_1mp" msgid="5043732005295894167">"Megapikseli 1"</string>
+    <string name="pref_camera_picturesize_entry_vga" msgid="7387786033708903628">"VGA"</string>
+    <string name="pref_camera_picturesize_entry_qvga" msgid="6134562622041084167">"QVGA"</string>
+    <string name="pref_camera_focusmode_title" msgid="3637702747984180030">"Hali ya kulenga"</string>
+    <string name="pref_camera_focusmode_entry_auto" msgid="8977409813328199501">"Kiotomatiki"</string>
+    <string name="pref_camera_focusmode_entry_infinity" msgid="3887667853236656322">"Pasipo mwisho"</string>
+    <string name="pref_camera_focusmode_entry_macro" msgid="7632276686726851426">"Makro"</string>
+    <string name="pref_camera_focusmode_label_auto" msgid="4884418453600317694">"OTOMATIKI"</string>
+    <string name="pref_camera_focusmode_label_infinity" msgid="1673352016120343314">"PASIPO MWISHO"</string>
+    <string name="pref_camera_focusmode_label_macro" msgid="5065639298027996399">"MAKRO"</string>
+    <string name="pref_camera_flashmode_title" msgid="8363803841022314574">"Hali ya mweko"</string>
+    <string name="pref_camera_flashmode_label" msgid="5852483713534762800">"HALI YA MWEKO"</string>
+    <string name="pref_camera_flashmode_entry_auto" msgid="4211992591841657014">"Kiotomatiki"</string>
+    <string name="pref_camera_flashmode_entry_on" msgid="3519831202665377698">"Washa"</string>
+    <string name="pref_camera_flashmode_entry_off" msgid="8861322265566617357">"Imezimwa"</string>
+    <string name="pref_camera_flashmode_label_auto" msgid="2309144918900450379">"MWEKO OTOMATIKI"</string>
+    <string name="pref_camera_flashmode_label_on" msgid="373595517770024934">"MWEKO UMEWASHWA"</string>
+    <string name="pref_camera_flashmode_label_off" msgid="7175863901446001441">"MWEKO UMEZIMWA"</string>
+    <string name="pref_camera_whitebalance_title" msgid="7962809566612868179">"Usawazishaji weupe"</string>
+    <string name="pref_camera_whitebalance_label" msgid="7370366644738746700">"USAWAZISHAJI WEUPE"</string>
+    <string name="pref_camera_whitebalance_entry_auto" msgid="1390631794449502796">"Kiotomatiki"</string>
+    <string name="pref_camera_whitebalance_entry_incandescent" msgid="1140391575294372706">"King\'arishaji"</string>
+    <string name="pref_camera_whitebalance_entry_daylight" msgid="757833578153467254">"Mwangaza wa mchana"</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="5157027611220790970">"Kiakisi mwanga"</string>
+    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3569589102226796875">"Mawingu"</string>
+    <string name="pref_camera_whitebalance_label_auto" msgid="4305837287360485369">"OTOMATIKI"</string>
+    <string name="pref_camera_whitebalance_label_incandescent" msgid="2860805668879945185">"KING\'ARISHAJI"</string>
+    <string name="pref_camera_whitebalance_label_daylight" msgid="4562002095198912409">"MCHANA"</string>
+    <string name="pref_camera_whitebalance_label_fluorescent" msgid="10552295745391742">"KIAKISI MWANGA"</string>
+    <string name="pref_camera_whitebalance_label_cloudy" msgid="4880793739075193336">"MAWINGU"</string>
+    <string name="pref_camera_scenemode_title" msgid="5709932164781367066">"Hali ya mandhari"</string>
+    <string name="pref_camera_scenemode_entry_auto" msgid="9205644316260850379">"Kiotomatiki"</string>
+    <string name="pref_camera_scenemode_entry_hdr_plus" msgid="6759085555519758794">"HDR+"</string>
+    <string name="pref_camera_scenemode_entry_hdr" msgid="3098836808080630955">"HDR"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_on" msgid="1096746750342289067">"HDR+ IMEWASHWA"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_off" msgid="2668770361856397834">"HDR+ IMEZIMWA"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_on" msgid="5232394324298489502">"HDR IMEWASHWA"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_off" msgid="7694606461440250206">"HDR IMEZIMWA"</string>
+    <string name="pref_camera_scenemode_entry_action" msgid="5753183620959062015">"Kitendo"</string>
+    <string name="pref_camera_scenemode_entry_night" msgid="3468037364159759991">"Usiku"</string>
+    <string name="pref_camera_scenemode_entry_sunset" msgid="5884302914893488509">"Machweo"</string>
+    <string name="pref_camera_scenemode_entry_party" msgid="401232668169066415">"Karamu"</string>
+    <string name="pref_camera_scenemode_label_auto" msgid="2874586883608401615">"HAMNA"</string>
+    <string name="pref_camera_scenemode_label_action" msgid="1822814017595414923">"KITENDO"</string>
+    <string name="pref_camera_scenemode_label_night" msgid="7764371228088101131">"USIKU"</string>
+    <string name="pref_camera_scenemode_label_sunset" msgid="3443610538453611123">"MACHWEO"</string>
+    <string name="pref_camera_scenemode_label_party" msgid="917499272505930322">"SHEREHE"</string>
+    <string name="pref_camera_countdown_label_off" msgid="3986433580620011481">"KIPIMA WAKATI KIMEZIMWA"</string>
+    <string name="pref_camera_countdown_label_one" msgid="7647972711796868848">"SEKUNDE 1"</string>
+    <string name="pref_camera_countdown_label_three" msgid="3154170918067103541">"SEKUNDE 3"</string>
+    <string name="pref_camera_countdown_label_ten" msgid="4372650985906500604">"SEKUNDE 10"</string>
+    <string name="pref_camera_countdown_label_fifteen" msgid="8469955900530268867">"SEKUNDE 15"</string>
+    <string name="not_selectable_in_scene_mode" msgid="3260801086980522611">"Haiwezi kuchaguliwa ikiwa katika hali ya mandhari."</string>
+    <string name="pref_exposure_title" msgid="7525751789152582800">"Kiasi cha mwangaza"</string>
+    <string name="pref_exposure_label" msgid="2604738602400261218">"KIASI CHA MWANGAZA"</string>
+    <!-- no translation found for pref_camera_hdr_default (5054955236904902318) -->
     <skip />
     <string name="pref_camera_timer_sound_title" msgid="2469008631966169105">"Toa mlio wakati wa kuhesabu"</string>
     <string name="setting_off" msgid="4480039384202951946">"Imezimwa"</string>

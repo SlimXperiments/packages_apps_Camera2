@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The Android Open Source Project
+<!-- Copyright (c) 2013, SlimRoms Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,20 +13,11 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
-<resources>
-    <!-- Specify the screen orientation -->
-    <bool name="only_use_portrait">false</bool>
-
-    <!-- Category Panel Height -->
-    <dimen name="category_panel_height">94dip</dimen>
-
-    <!-- Category Panel Icon Size -->
-    <dimen name="category_panel_icon_size">72dip</dimen>
-
-    <!-- Category Panel Text Size -->
-    <dimen name="category_panel_text_size">14dip</dimen>
-
-    <!-- Category Panel Text Size -->
-    <dimen name="category_panel_margin">4dip</dimen>
-</resources>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="500"
+        android:repeatMode="reverse"
+        android:repeatCount="infinite" />
+</set>

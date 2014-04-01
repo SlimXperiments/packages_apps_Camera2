@@ -55,20 +55,18 @@ public class MoreSettingPopup extends AbstractSettingPopup
         LayoutInflater mInflater;
         String mOnString;
         String mOffString;
+        ListPreference mActualPref;
+
+        private static final int CHECKBOX_LAYOUT = 0;
+        private static final int MENU_LAYOUT     = CHECKBOX_LAYOUT + 1;
+        private static final int MAX_TYPE_COUNT  = MENU_LAYOUT + 1;
+
         MoreSettingAdapter() {
             super(MoreSettingPopup.this.getContext(), 0, mListItem);
             Context context = getContext();
             mInflater = LayoutInflater.from(context);
             mOnString = context.getString(R.string.setting_on);
             mOffString = context.getString(R.string.setting_off);
-        }
-
-        private int getSettingLayoutId(ListPreference pref) {
-
-            if (isOnOffPreference(pref)) {
-                return R.layout.in_line_setting_check_box;
-            }
-            return R.layout.in_line_setting_menu;
         }
 
         private boolean isOnOffPreference(ListPreference pref) {
@@ -81,16 +79,32 @@ public class MoreSettingPopup extends AbstractSettingPopup
         }
 
         @Override
+        public int getItemViewType(int position) {
+            mActualPref = mListItem.get(position);
+            if (isOnOffPreference(mActualPref)) {
+                return CHECKBOX_LAYOUT;
+            } else {
+                return MENU_LAYOUT;
+            }
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return MAX_TYPE_COUNT;
+        }
+
+        @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView != null) return convertView;
+            InLineSettingItem view = (InLineSettingItem) convertView;
+            int type = getItemViewType(position);
+            if (view == null) {
+                view = (InLineSettingItem)
+                        mInflater.inflate(type == CHECKBOX_LAYOUT
+                            ? R.layout.in_line_setting_check_box
+                            : R.layout.in_line_setting_menu, parent, false);
+            }
 
-            ListPreference pref = mListItem.get(position);
-
-            int viewLayoutId = getSettingLayoutId(pref);
-            InLineSettingItem view = (InLineSettingItem)
-                    mInflater.inflate(viewLayoutId, parent, false);
-
-            view.initialize(pref); // no init for restore one
+            view.initialize(mActualPref);
             view.setSettingChangedListener(MoreSettingPopup.this);
             if (position >= 0 && position < mEnabled.length) {
                 view.setEnabled(mEnabled[position]);
@@ -145,6 +159,9 @@ public class MoreSettingPopup extends AbstractSettingPopup
             ListPreference pref = mListItem.get(j);
             if (pref != null && key.equals(pref.getKey())) {
                 mEnabled[j] = enable;
+                if (mSettingList.getChildCount() > j) {
+                    mSettingList.getChildAt(j).setEnabled(enable);
+                }
                 break;
             }
         }
@@ -157,7 +174,7 @@ public class MoreSettingPopup extends AbstractSettingPopup
     }
 
     // Scene mode can override other camera settings (ex: flash mode).
-    public void overrideSettings(final String ... keyvalues) {
+    public void overrideSettings(final String... keyvalues) {
         int count = mEnabled == null ? 0 : mEnabled.length;
         for (int i = 0; i < keyvalues.length; i += 2) {
             String key = keyvalues[i];
@@ -170,9 +187,6 @@ public class MoreSettingPopup extends AbstractSettingPopup
                     // If the preference is overridden, disable the preference
                     boolean enable = value == null;
                     mEnabled[j] = enable;
-                    if (mSettingList.getChildCount() > j) {
-                        mSettingList.getChildAt(j).setEnabled(enable);
-                    }
                 }
             }
         }

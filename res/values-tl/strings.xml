@@ -241,48 +241,79 @@
   </plurals>
     <!-- no translation found for pref_camera_timer_sound_default (7066624532144402253) -->
     <skip />
-    <string name="pref_camera_timer_sound_title" msgid="2469008631966169105">"Beep sa pag-countdown"</string>
-    <string name="setting_off" msgid="4480039384202951946">"Naka-off"</string>
-    <string name="setting_on" msgid="8602246224465348901">"Naka-on"</string>
-    <string name="pref_video_quality_title" msgid="8245379279801096922">"Kalidad ng video"</string>
-    <string name="pref_video_quality_entry_high" msgid="8664038216234805914">"Mataas"</string>
-    <string name="pref_video_quality_entry_low" msgid="7258507152393173784">"Mababa"</string>
-    <string name="pref_video_time_lapse_frame_interval_title" msgid="6245716906744079302">"Lumipas na oras"</string>
-    <string name="pref_camera_settings_category" msgid="2576236450859613120">"Mga setting ng kamera"</string>
-    <string name="pref_camcorder_settings_category" msgid="460313486231965141">"Mga setting ng camcorder"</string>
-    <string name="pref_camera_picturesize_title" msgid="4333724936665883006">"Laki ng larawan"</string>
-    <string name="pref_camera_picturesize_entry_8mp" msgid="259953780932849079">"8M pixels"</string>
-    <string name="pref_camera_picturesize_entry_5mp" msgid="2882928212030661159">"5M pixels"</string>
-    <string name="pref_camera_picturesize_entry_3mp" msgid="741415860337400696">"3M pixels"</string>
-    <string name="pref_camera_picturesize_entry_2mp" msgid="1753709802245460393">"2M pixels"</string>
-    <string name="pref_camera_picturesize_entry_1_3mp" msgid="829109608140747258">"1.3M pixels"</string>
-    <string name="pref_camera_picturesize_entry_1mp" msgid="1669725616780375066">"1M pixel"</string>
-    <string name="pref_camera_picturesize_entry_vga" msgid="806934254162981919">"VGA"</string>
-    <string name="pref_camera_picturesize_entry_qvga" msgid="8576186463069770133">"QVGA"</string>
-    <string name="pref_camera_focusmode_title" msgid="2877248921829329127">"Focus mode"</string>
-    <string name="pref_camera_focusmode_entry_auto" msgid="7374820710300362457">"Auto"</string>
-    <string name="pref_camera_focusmode_entry_infinity" msgid="3413922419264967552">"Walang Katapusan"</string>
-    <string name="pref_camera_focusmode_entry_macro" msgid="4424489110551866161">"Macro"</string>
-    <string name="pref_camera_flashmode_title" msgid="2287362477238791017">"Flash mode"</string>
-    <string name="pref_camera_flashmode_entry_auto" msgid="7288383434237457709">"Auto"</string>
-    <string name="pref_camera_flashmode_entry_on" msgid="5330043918845197616">"Naka-on"</string>
-    <string name="pref_camera_flashmode_entry_off" msgid="867242186958805761">"Naka-off"</string>
-    <string name="pref_camera_whitebalance_title" msgid="677420930596673340">"White balance"</string>
-    <string name="pref_camera_whitebalance_entry_auto" msgid="6580665476983469293">"Auto"</string>
-    <string name="pref_camera_whitebalance_entry_incandescent" msgid="8856667786449549938">"Napakaliwanag"</string>
-    <string name="pref_camera_whitebalance_entry_daylight" msgid="2534757270149561027">"Liwanag ng araw"</string>
-    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="2435332872847454032">"Fluorescent"</string>
-    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3531996716997959326">"Maulap"</string>
-    <string name="pref_camera_scenemode_title" msgid="1420535844292504016">"Scene mode"</string>
-    <string name="pref_camera_scenemode_entry_auto" msgid="7113995286836658648">"Auto"</string>
-    <string name="pref_camera_scenemode_entry_hdr" msgid="2923388802899511784">"HDR"</string>
-    <string name="pref_camera_scenemode_entry_action" msgid="616748587566110484">"Pagkilos"</string>
-    <string name="pref_camera_scenemode_entry_night" msgid="7606898503102476329">"Gabi"</string>
-    <string name="pref_camera_scenemode_entry_sunset" msgid="181661154611507212">"Paglubog ng araw"</string>
-    <string name="pref_camera_scenemode_entry_party" msgid="907053529286788253">"Partido"</string>
-    <string name="not_selectable_in_scene_mode" msgid="2970291701448555126">"Hindi mapipili sa mode ng scene."</string>
-    <string name="pref_exposure_title" msgid="1229093066434614811">"Pagkakalantad"</string>
-    <!-- no translation found for pref_camera_hdr_default (1336869406134365882) -->
+    <string name="pref_camera_timer_sound_title" msgid="9036987234878551217">"Beep sa pag-countdown"</string>
+    <string name="setting_off" msgid="6782191065550276632">"Naka-off"</string>
+    <string name="setting_on" msgid="9086728135773197891">"Naka-on"</string>
+    <string name="pref_video_quality_title" msgid="5887153490982738588">"Kalidad ng video"</string>
+    <string name="pref_video_time_lapse_frame_interval_title" msgid="4975260837607993569">"Time lapse"</string>
+    <string name="pref_camera_settings_category" msgid="4274141528139077830">"Mga setting ng camera"</string>
+    <string name="pref_camcorder_settings_category" msgid="3553148484755353397">"Mga setting ng camcorder"</string>
+    <string name="pref_camera_picturesize_title" msgid="686045304547541815">"Laki ng larawan"</string>
+    <string name="pref_camera_picturesize_entry_13mp" msgid="6728485576074234195">"13M pixel"</string>
+    <string name="pref_camera_picturesize_entry_8mp" msgid="7088352012301633667">"8M pixel"</string>
+    <string name="pref_camera_picturesize_entry_5mp" msgid="1501745661448065284">"5M pixel"</string>
+    <string name="pref_camera_picturesize_entry_4mp" msgid="4786178543089540678">"4M pixel"</string>
+    <string name="pref_camera_picturesize_entry_3mp" msgid="140799231761236311">"3M pixel"</string>
+    <string name="pref_camera_picturesize_entry_2mp" msgid="450006451326859328">"2M pixel"</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide" msgid="1877997036497332813">"2M pixel (16:9)"</string>
+    <string name="pref_camera_picturesize_entry_1_5mp" msgid="7089801019442294745">"1.5M pixel"</string>
+    <string name="pref_camera_picturesize_entry_1_3mp" msgid="3451742533756821502">"1.3M pixel"</string>
+    <string name="pref_camera_picturesize_entry_1mp" msgid="5043732005295894167">"1M pixel"</string>
+    <string name="pref_camera_picturesize_entry_vga" msgid="7387786033708903628">"VGA"</string>
+    <string name="pref_camera_picturesize_entry_qvga" msgid="6134562622041084167">"QVGA"</string>
+    <string name="pref_camera_focusmode_title" msgid="3637702747984180030">"Focus mode"</string>
+    <string name="pref_camera_focusmode_entry_auto" msgid="8977409813328199501">"Auto"</string>
+    <string name="pref_camera_focusmode_entry_infinity" msgid="3887667853236656322">"Infinity"</string>
+    <string name="pref_camera_focusmode_entry_macro" msgid="7632276686726851426">"Macro"</string>
+    <string name="pref_camera_focusmode_label_auto" msgid="4884418453600317694">"AUTO"</string>
+    <string name="pref_camera_focusmode_label_infinity" msgid="1673352016120343314">"INFINITY"</string>
+    <string name="pref_camera_focusmode_label_macro" msgid="5065639298027996399">"MACRO"</string>
+    <string name="pref_camera_flashmode_title" msgid="8363803841022314574">"Flash mode"</string>
+    <string name="pref_camera_flashmode_label" msgid="5852483713534762800">"FLASH MODE"</string>
+    <string name="pref_camera_flashmode_entry_auto" msgid="4211992591841657014">"Auto"</string>
+    <string name="pref_camera_flashmode_entry_on" msgid="3519831202665377698">"Naka-on"</string>
+    <string name="pref_camera_flashmode_entry_off" msgid="8861322265566617357">"Naka-off"</string>
+    <string name="pref_camera_flashmode_label_auto" msgid="2309144918900450379">"FLASH AUTO"</string>
+    <string name="pref_camera_flashmode_label_on" msgid="373595517770024934">"NAKA-ON ANG FLASH"</string>
+    <string name="pref_camera_flashmode_label_off" msgid="7175863901446001441">"NAKA-OFF ANG FLASH"</string>
+    <string name="pref_camera_whitebalance_title" msgid="7962809566612868179">"White balance"</string>
+    <string name="pref_camera_whitebalance_label" msgid="7370366644738746700">"WHITE BALANCE"</string>
+    <string name="pref_camera_whitebalance_entry_auto" msgid="1390631794449502796">"Auto"</string>
+    <string name="pref_camera_whitebalance_entry_incandescent" msgid="1140391575294372706">"Incandescent"</string>
+    <string name="pref_camera_whitebalance_entry_daylight" msgid="757833578153467254">"Daylight"</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="5157027611220790970">"Fluorescent"</string>
+    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3569589102226796875">"Maulap"</string>
+    <string name="pref_camera_whitebalance_label_auto" msgid="4305837287360485369">"AUTO"</string>
+    <string name="pref_camera_whitebalance_label_incandescent" msgid="2860805668879945185">"INCANDESCENT"</string>
+    <string name="pref_camera_whitebalance_label_daylight" msgid="4562002095198912409">"DAYLIGHT"</string>
+    <string name="pref_camera_whitebalance_label_fluorescent" msgid="10552295745391742">"FLUORESCENT"</string>
+    <string name="pref_camera_whitebalance_label_cloudy" msgid="4880793739075193336">"MAULAP"</string>
+    <string name="pref_camera_scenemode_title" msgid="5709932164781367066">"Scene mode"</string>
+    <string name="pref_camera_scenemode_entry_auto" msgid="9205644316260850379">"Auto"</string>
+    <string name="pref_camera_scenemode_entry_hdr_plus" msgid="6759085555519758794">"HDR+"</string>
+    <string name="pref_camera_scenemode_entry_hdr" msgid="3098836808080630955">"HDR"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_on" msgid="1096746750342289067">"NAKA-ON ANG HDR+"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_off" msgid="2668770361856397834">"NAKA-OFF ANG HDR+"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_on" msgid="5232394324298489502">"NAKA-ON ANG HDR"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_off" msgid="7694606461440250206">"NAKA-OFF ANG HDR"</string>
+    <string name="pref_camera_scenemode_entry_action" msgid="5753183620959062015">"Aksyon"</string>
+    <string name="pref_camera_scenemode_entry_night" msgid="3468037364159759991">"Gabi"</string>
+    <string name="pref_camera_scenemode_entry_sunset" msgid="5884302914893488509">"Takipsilim"</string>
+    <string name="pref_camera_scenemode_entry_party" msgid="401232668169066415">"Party"</string>
+    <string name="pref_camera_scenemode_label_auto" msgid="2874586883608401615">"WALA"</string>
+    <string name="pref_camera_scenemode_label_action" msgid="1822814017595414923">"AKSYON"</string>
+    <string name="pref_camera_scenemode_label_night" msgid="7764371228088101131">"GABI"</string>
+    <string name="pref_camera_scenemode_label_sunset" msgid="3443610538453611123">"TAKIPSILIM"</string>
+    <string name="pref_camera_scenemode_label_party" msgid="917499272505930322">"PARTY"</string>
+    <string name="pref_camera_countdown_label_off" msgid="3986433580620011481">"NAKA-OFF ANG TIMER"</string>
+    <string name="pref_camera_countdown_label_one" msgid="7647972711796868848">"1 SEGUNDO"</string>
+    <string name="pref_camera_countdown_label_three" msgid="3154170918067103541">"3 SEGUNDO"</string>
+    <string name="pref_camera_countdown_label_ten" msgid="4372650985906500604">"10 SEGUNDO"</string>
+    <string name="pref_camera_countdown_label_fifteen" msgid="8469955900530268867">"15 SEGUNDO"</string>
+    <string name="not_selectable_in_scene_mode" msgid="3260801086980522611">"Hindi mapipili sa scene mode."</string>
+    <string name="pref_exposure_title" msgid="7525751789152582800">"Exposure"</string>
+    <string name="pref_exposure_label" msgid="2604738602400261218">"EXPOSURE"</string>
+    <!-- no translation found for pref_camera_hdr_default (5054955236904902318) -->
     <skip />
     <string name="dialog_ok" msgid="6263301364153382152">"OK"</string>
     <string name="spaceIsLow_content" product="nosdcard" msgid="4401325203349203177">"Nauubusan na ng puwang ang iyong imbakan na USB. Baguhin ang setting ng kalidad o tanggalin ang ilan sa mga larawan o ibang mga file."</string>

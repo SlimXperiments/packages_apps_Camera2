@@ -321,6 +321,9 @@ public class WideAnglePanoramaUI implements
     }
 
     @Override
+    public void onShutterButtonLongClick() {}
+
+    @Override
     public void onLayoutChange(
             View v, int l, int t, int r, int b,
             int oldl, int oldt, int oldr, int oldb) {
@@ -374,7 +377,7 @@ public class WideAnglePanoramaUI implements
 
         mShutterButton = (ShutterButton) mRootView.findViewById(R.id.shutter_button);
         mShutterButton.setImageResource(R.drawable.btn_new_shutter);
-        mShutterButton.setOnShutterButtonListener(this);
+        mShutterButton.setOnShutterButtonListener(this, false);
         // Hide menu and indicators.
         mRootView.findViewById(R.id.menu).setVisibility(View.GONE);
         mRootView.findViewById(R.id.on_screen_indicators).setVisibility(View.GONE);

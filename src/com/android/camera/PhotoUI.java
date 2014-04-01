@@ -19,6 +19,7 @@ package com.android.camera;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -36,10 +37,13 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+import android.os.SystemProperties;
 
 import com.android.camera.CameraPreference.OnPreferenceChangedListener;
 import com.android.camera.FocusOverlayManager.FocusUI;
@@ -67,6 +71,7 @@ public class PhotoUI implements PieListener,
     CameraManager.CameraFaceDetectionCallback {
 
     private static final String TAG = "CAM_UI";
+    private static final String PERSIST_LONG_ENABLE = "persist.camera.longshot.enable";
     private static final int DOWN_SAMPLE_FACTOR = 4;
     private final AnimationManager mAnimationManager;
     private CameraActivity mActivity;
@@ -97,6 +102,13 @@ public class PhotoUI implements PieListener,
     // Small indicators which show the camera settings in the viewfinder.
     private OnScreenIndicators mOnScreenIndicators;
 
+    // Corner indicator for gps
+    private ImageView mGpsIndicator;
+    private ImageView mGpsIndicatorBlinker;
+
+    private boolean mGpsAnimationStarted;
+    private Animation mGpsAnimation;
+
     private PieRenderer mPieRenderer;
     private ZoomRenderer mZoomRenderer;
     private Toast mNotSelectableToast;
@@ -106,6 +118,7 @@ public class PhotoUI implements PieListener,
 
     private int mPreviewWidth = 0;
     private int mPreviewHeight = 0;
+    public boolean mMenuInitialized = false;
     private float mSurfaceTextureUncroppedWidth;
     private float mSurfaceTextureUncroppedHeight;
 
@@ -116,6 +129,10 @@ public class PhotoUI implements PieListener,
     private TextureView mTextureView;
     private Matrix mMatrix = null;
     private float mAspectRatio = 4f / 3f;
+    private boolean mAspectRatioResize;
+
+    private boolean mOrientationResize;
+    private boolean mPrevOrientationResize;
     private View mPreviewCover;
     private final Object mSurfaceTextureLock = new Object();
 
@@ -129,10 +146,15 @@ public class PhotoUI implements PieListener,
                 int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
             int width = right - left;
             int height = bottom - top;
-            if (mPreviewWidth != width || mPreviewHeight != height) {
+            if (mPreviewWidth != width || mPreviewHeight != height
+                    || (mOrientationResize != mPrevOrientationResize)
+                    || mAspectRatioResize) {
                 mPreviewWidth = width;
                 mPreviewHeight = height;
                 setTransformMatrix(width, height);
+                mController.onScreenSizeChanged((int) mSurfaceTextureUncroppedWidth,
+                        (int) mSurfaceTextureUncroppedHeight);
+                mAspectRatioResize = false;
             }
         }
     };
@@ -152,7 +174,7 @@ public class PhotoUI implements PieListener,
         protected Bitmap doInBackground(Void... params) {
             // Decode image in background.
             Bitmap bitmap = CameraUtil.downSample(mData, DOWN_SAMPLE_FACTOR);
-            if (mOrientation != 0 || mMirror) {
+            if ((mOrientation != 0 || mMirror) && (bitmap != null)) {
                 Matrix m = new Matrix();
                 if (mMirror) {
                     // Flip horizontally
@@ -202,6 +224,8 @@ public class PhotoUI implements PieListener,
         mTextureView = (TextureView) mRootView.findViewById(R.id.preview_content);
         mTextureView.setSurfaceTextureListener(this);
         mTextureView.addOnLayoutChangeListener(mLayoutListener);
+        mGpsAnimation = AnimationUtils.loadAnimation(activity,
+            R.anim.gps_animation);
         initIndicators();
 
         mShutterButton = (ShutterButton) mRootView.findViewById(R.id.shutter_button);
@@ -218,23 +242,44 @@ public class PhotoUI implements PieListener,
         }
         mCameraControls = (CameraControls) mRootView.findViewById(R.id.camera_controls);
         mAnimationManager = new AnimationManager();
+
+        mOrientationResize = false;
+        mPrevOrientationResize = false;
+    }
+
+     public void cameraOrientationPreviewResize(boolean orientation){
+        mPrevOrientationResize = mOrientationResize;
+        mOrientationResize = orientation;
+     }
+
+    public void setAspectRatio(float ratio) {
+        if (ratio <= 0.0) throw new IllegalArgumentException();
+
+        if (mOrientationResize && CameraUtil.isScreenRotated(mActivity)) {
+            ratio = 1 / ratio;
+        }
+
+        Log.d(TAG,"setAspectRatio() ratio["+ratio+"] mAspectRatio["+mAspectRatio+"]");
+        mAspectRatio = ratio;
+        mAspectRatioResize = true;
+        mTextureView.requestLayout();
     }
 
     public void setSurfaceTextureSizeChangedListener(SurfaceTextureSizeChangedListener listener) {
         mSurfaceTextureSizeListener = listener;
     }
 
-    public void updatePreviewAspectRatio(float aspectRatio) {
+    public void updatePreviewAspectRatio(float aspectRatio, boolean isTrueView) {
         if (aspectRatio <= 0) {
             Log.e(TAG, "Invalid aspect ratio: " + aspectRatio);
             return;
         }
-        if (aspectRatio < 1f) {
+        if (mOrientationResize && CameraUtil.isScreenRotated(mActivity)) {
             aspectRatio = 1f / aspectRatio;
         }
 
         if (mAspectRatio != aspectRatio) {
-            mAspectRatio = aspectRatio;
+            if (!isTrueView) mAspectRatio = aspectRatio;
             // Update transform matrix with the new aspect ratio.
             if (mPreviewWidth != 0 && mPreviewHeight != 0) {
                 setTransformMatrix(mPreviewWidth, mPreviewHeight);
@@ -246,16 +291,26 @@ public class PhotoUI implements PieListener,
         mMatrix = mTextureView.getTransform(mMatrix);
         float scaleX = 1f, scaleY = 1f;
         float scaledTextureWidth, scaledTextureHeight;
-        if (width > height) {
-            scaledTextureWidth = Math.max(width,
-                    (int) (height * mAspectRatio));
-            scaledTextureHeight = Math.max(height,
-                    (int)(width / mAspectRatio));
+        if (mOrientationResize && !mActivity.mTrueView) {
+            scaledTextureWidth = height * mAspectRatio;
+            if(scaledTextureWidth > width){
+                scaledTextureWidth = width;
+                scaledTextureHeight = scaledTextureWidth / mAspectRatio;
+            } else {
+                scaledTextureHeight = height;
+            }
         } else {
-            scaledTextureWidth = Math.max(width,
-                    (int) (height / mAspectRatio));
-            scaledTextureHeight = Math.max(height,
-                    (int) (width * mAspectRatio));
+            if (width > height) {
+                scaledTextureWidth = mActivity.mTrueView ? (height * mAspectRatio)
+                        : Math.max(width,(int) (height * mAspectRatio));
+                scaledTextureHeight = mActivity.mTrueView ? height
+                        : Math.max(height,(int)(width / mAspectRatio));
+            } else {
+                scaledTextureWidth = mActivity.mTrueView ? width
+                        : Math.max(width,(int) (height / mAspectRatio));
+                scaledTextureHeight = mActivity.mTrueView ? (width * mAspectRatio)
+                        : Math.max(height,(int) (width * mAspectRatio));
+            }
         }
 
         if (mSurfaceTextureUncroppedWidth != scaledTextureWidth ||
@@ -326,6 +381,8 @@ public class PhotoUI implements PieListener,
     private void initIndicators() {
         mOnScreenIndicators = new OnScreenIndicators(mActivity,
                 mRootView.findViewById(R.id.on_screen_indicators));
+        mGpsIndicator = (ImageView) mRootView.findViewById(R.id.indicator_gps);
+        mGpsIndicatorBlinker = (ImageView) mRootView.findViewById(R.id.indicator_gps_blinker);
     }
 
     public void onCameraOpened(PreferenceGroup prefGroup, ComboPreferences prefs,
@@ -341,6 +398,7 @@ public class PhotoUI implements PieListener,
             mMenu.setListener(listener);
         }
         mMenu.initialize(prefGroup);
+        mMenuInitialized = true;
 
         if (mZoomRenderer == null) {
             mZoomRenderer = new ZoomRenderer(mActivity);
@@ -450,7 +508,8 @@ public class PhotoUI implements PieListener,
     public  void initializeFirstTime() {
         // Initialize shutter button.
         mShutterButton.setImageResource(R.drawable.btn_new_shutter);
-        mShutterButton.setOnShutterButtonListener(mController);
+        mShutterButton.setOnShutterButtonListener(mController,
+                SystemProperties.getBoolean(PERSIST_LONG_ENABLE, false));
         mShutterButton.setVisibility(View.VISIBLE);
     }
 
@@ -510,18 +569,50 @@ public class PhotoUI implements PieListener,
     }
 
     @Override
-    public void showGpsOnScreenIndicator(boolean hasSignal) { }
+    public void showGpsOnScreenIndicator(boolean enabled, boolean hasSignal) {
+        if (mGpsIndicator == null || mGpsIndicatorBlinker == null) {
+            return;
+        }
+
+        if (!enabled) {
+            mGpsIndicator.setImageResource(R.drawable.ic_viewfinder_gps_off);
+        } else if (hasSignal) {
+            mGpsIndicator.setImageResource(R.drawable.ic_viewfinder_gps_on);
+        } else {
+            mGpsIndicator.setImageResource(R.drawable.ic_viewfinder_gps_no_signal);
+        }
+        mGpsIndicator.setVisibility(View.VISIBLE);
+
+        if (enabled && !hasSignal && !mGpsAnimationStarted) {
+            mGpsAnimationStarted = true;
+            mGpsIndicatorBlinker.setVisibility(View.VISIBLE);
+            mGpsIndicatorBlinker.startAnimation(mGpsAnimation);
+        } else if (enabled && hasSignal) {
+            mGpsAnimationStarted = false;
+            mGpsIndicatorBlinker.setVisibility(View.GONE);
+            mGpsIndicatorBlinker.clearAnimation();
+        }
+    }
 
     @Override
-    public void hideGpsOnScreenIndicator() { }
+    public void hideGpsOnScreenIndicator() {
+        if (mGpsIndicator == null || mGpsIndicatorBlinker == null) {
+            return;
+        }
+        mGpsIndicator.setVisibility(View.GONE);
+        mGpsIndicatorBlinker.setVisibility(View.GONE);
+        mGpsIndicatorBlinker.clearAnimation();
+        mGpsAnimationStarted = false;
+    }
 
     public void overrideSettings(final String ... keyvalues) {
+        if (mMenu == null) return;
         mMenu.overrideSettings(keyvalues);
     }
 
     public void updateOnScreenIndicators(Camera.Parameters params,
             PreferenceGroup group, ComboPreferences prefs) {
-        if (params == null) return;
+        if (params == null || group == null) return;
         mOnScreenIndicators.updateSceneOnScreenIndicator(params.getSceneMode());
         mOnScreenIndicators.updateExposureOnScreenIndicator(params,
                 CameraSettings.readExposure(prefs));
@@ -725,6 +816,7 @@ public class PhotoUI implements PieListener,
         @Override
         public void onZoomStart() {
             if (mPieRenderer != null) {
+                mPieRenderer.hide();
                 mPieRenderer.setBlockFocus(true);
             }
         }
@@ -770,6 +862,7 @@ public class PhotoUI implements PieListener,
                 (ViewGroup) mRootView, true);
         mCountDownView = (CountDownView) (mRootView.findViewById(R.id.count_down_to_capture));
         mCountDownView.setCountDownFinishedListener((OnCountDownFinishedListener) mController);
+        mCountDownView.bringToFront();
     }
 
     public boolean isCountingDown() {
@@ -881,6 +974,13 @@ public class PhotoUI implements PieListener,
     @Override
     public void onFaceDetection(Face[] faces, CameraManager.CameraProxy camera) {
         mFaceView.setFaces(faces);
+    }
+
+    public boolean onScaleStepResize(boolean direction) {
+        if (mGestures != null) {
+            return mGestures.onScaleStepResize(direction);
+        }
+        return false;
     }
 
     @Override

@@ -40,6 +40,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -56,6 +57,7 @@ import com.android.camera.CameraActivity;
 import com.android.camera.CameraDisabledException;
 import com.android.camera.CameraHolder;
 import com.android.camera.CameraManager;
+import com.android.camera.CameraSettings;
 import com.android.camera.util.IntentHelper;
 import com.android.camera2.R;
 
@@ -111,9 +113,24 @@ public class CameraUtil {
     public static final String TRUE = "true";
     public static final String FALSE = "false";
 
+    private static boolean sEnableZSL;
+
+    private static boolean sCancelAutoFocusOnPreviewStopped;
+
+    // Do not change the focus mode when TTF is used
+    private static boolean sNoFocusModeChangeForTouch;
+
     // Fields for the show-on-maps-functionality
     private static final String MAPS_PACKAGE_NAME = "com.google.android.apps.maps";
     private static final String MAPS_CLASS_NAME = "com.google.android.maps.MapsActivity";
+
+    public static boolean isZSLEnabled() {
+        return sEnableZSL;
+    }
+
+    public static boolean cancelAutoFocusOnPreviewStopped() {
+        return sCancelAutoFocusOnPreviewStopped;
+    }
 
     /** Has to be in sync with the receiving MovieActivity. */
     public static final String KEY_TREAT_UP_AS_BACK = "treat-up-as-back";
@@ -149,12 +166,40 @@ public class CameraUtil {
                         params.getSupportedFocusModes()));
     }
 
+    public static boolean isSupported(Parameters params, String key) {
+        return (params.get(key) != null && !"null".equals(params.get(key)));
+    }
+
+    public static int getNumSnapsPerShutter(Parameters params) {
+        String numJpegs = params.get("num-jpegs-per-shutter");
+        if (!TextUtils.isEmpty(numJpegs)) {
+            return Integer.valueOf(numJpegs);
+        }
+        String numSnaps = params.get("num-snaps-per-shutter");
+        if (!TextUtils.isEmpty(numSnaps)) {
+            return Integer.valueOf(numSnaps);
+        }
+        return 1;
+    }
+
     // Private intent extras. Test only.
     private static final String EXTRAS_CAMERA_FACING =
             "android.intent.extras.CAMERA_FACING";
 
     private static float sPixelDensity = 1;
     private static ImageFileNamer sImageFileNamer;
+
+    // Use samsung HDR format
+    private static boolean sSamsungHDRFormat;
+
+    // Samsung camcorder mode
+    private static boolean sSamsungCamMode;
+
+    // For setting video size before recording starts
+    private static boolean sEarlyVideoSize;
+
+    // Continuous focus mode needs autoFocusCall
+    private static boolean sContinuousFocusNeedsAutoFocusCall;
 
     private CameraUtil() {
     }
@@ -167,10 +212,36 @@ public class CameraUtil {
         sPixelDensity = metrics.density;
         sImageFileNamer = new ImageFileNamer(
                 context.getString(R.string.image_file_name_format));
+        sEnableZSL = context.getResources().getBoolean(R.bool.enableZSL);
+        sCancelAutoFocusOnPreviewStopped =
+                context.getResources().getBoolean(R.bool.cancelAutoFocusOnPreviewStopped);
+        sSamsungCamMode = context.getResources().getBoolean(R.bool.needsSamsungCamMode);
+        sEarlyVideoSize = context.getResources().getBoolean(R.bool.needsEarlyVideoSize);
+        sContinuousFocusNeedsAutoFocusCall =
+            context.getResources().getBoolean(R.bool.continuousFocusNeedsAutoFocusCall);
+        sSamsungHDRFormat = context.getResources().getBoolean(R.bool.needsSamsungHDRFormat);
+        sNoFocusModeChangeForTouch = context.getResources().getBoolean(
+                R.bool.useContinuosFocusForTouch);
     }
 
     public static int dpToPixel(int dp) {
         return Math.round(sPixelDensity * dp);
+    }
+
+    public static boolean useSamsungCamMode() {
+        return sSamsungCamMode;
+    }
+
+    public static boolean isContinuousFocusNeedsAutoFocusCall() {
+        return sContinuousFocusNeedsAutoFocusCall;
+    }
+
+    public static boolean needSamsungHDRFormat() {
+        return sSamsungHDRFormat;
+    }
+
+    public static boolean noFocusModeChangeForTouch() {
+        return sNoFocusModeChangeForTouch;
     }
 
     // Rotates the bitmap by the specified degree.
@@ -303,6 +374,47 @@ public class CameraUtil {
         }
     }
 
+    public static Bitmap decodeYUV422P(byte[] yuv422p, int width, int height)
+                        throws NullPointerException, IllegalArgumentException {
+        final int frameSize = width * height;
+        int[] rgb = new int[frameSize];
+        for (int j = 0, yp = 0; j < height; j++) {
+            int up = frameSize + (j * (width/2)), u = 0, v = 0;
+            int vp = ((int)(frameSize*1.5) + (j*(width/2)));
+            for (int i = 0; i < width; i++, yp++) {
+                int y = (0xff & ((int) yuv422p[yp])) - 16;
+                if (y < 0)
+                    y = 0;
+                if ((i & 1) == 0) {
+                    u = (0xff & yuv422p[up++]) - 128;
+                    v = (0xff & yuv422p[vp++]) - 128;
+                }
+
+                int y1192 = 1192 * y;
+                int r = (y1192 + 1634 * v);
+                int g = (y1192 - 833 * v - 400 * u);
+                int b = (y1192 + 2066 * u);
+
+                if (r < 0)
+                    r = 0;
+                else if (r > 262143)
+                    r = 262143;
+                if (g < 0)
+                    g = 0;
+                else if (g > 262143)
+                    g = 262143;
+                if (b < 0)
+                    b = 0;
+                else if (b > 262143)
+                    b = 262143;
+
+                rgb[yp] = 0xff000000 | ((r << 6) & 0xff0000)
+                        | ((g >> 2) & 0xff00) | ((b >> 10) & 0xff);
+            }
+        }
+        return Bitmap.createBitmap(rgb, width, height, Bitmap.Config.ARGB_8888);
+    }
+
     public static void closeSilently(Closeable c) {
         if (c == null) return;
         try {
@@ -410,6 +522,12 @@ public class CameraUtil {
             case Surface.ROTATION_270: return 270;
         }
         return 0;
+    }
+
+    public static boolean isScreenRotated(Activity activity) {
+        int rotation = activity.getWindowManager().getDefaultDisplay()
+                .getRotation();
+        return rotation != Surface.ROTATION_0 && rotation != Surface.ROTATION_180;
     }
 
     /**
@@ -820,7 +938,20 @@ public class CameraUtil {
             }
         }
     }
-
+   public static String getFilpModeString(int value){
+        switch(value){
+            case 0:
+                return CameraSettings.FLIP_MODE_OFF;
+            case 1:
+                return CameraSettings.FLIP_MODE_H;
+            case 2:
+                return CameraSettings.FLIP_MODE_V;
+            case 3:
+                return CameraSettings.FLIP_MODE_VH;
+            default:
+                return null;
+        }
+    }
     /**
      * For still image capture, we need to get the right fps range such that the
      * camera can slow down the framerate to allow for less-noisy/dark
@@ -982,4 +1113,9 @@ public class CameraUtil {
         }
         return ret;
     }
+
+    public static boolean needsEarlyVideoSize() {
+        return sEarlyVideoSize;
+    }
+
 }

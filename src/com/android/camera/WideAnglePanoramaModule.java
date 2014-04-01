@@ -43,7 +43,7 @@ import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-
+import com.android.camera.PhotoModule;
 import com.android.camera.CameraManager.CameraProxy;
 import com.android.camera.app.OrientationManager;
 import com.android.camera.data.LocalData;
@@ -146,6 +146,9 @@ public class WideAnglePanoramaModule
     private ComboPreferences mPreferences;
     private boolean mMosaicPreviewConfigured;
     private boolean mPreviewFocused = true;
+
+    private int mVolumeKeyMode = CameraSettings.VKM_ZOOM;
+    private boolean mPowerKeyShutter;
 
     @Override
     public void onPreviewUIReady() {
@@ -265,6 +268,20 @@ public class WideAnglePanoramaModule
         mPreferences = new ComboPreferences(mActivity);
         CameraSettings.upgradeGlobalPreferences(mPreferences.getGlobal());
         mLocationManager = new LocationManager(mActivity, null);
+
+        // Set volume key mode.
+        String volumeKeyMode = mPreferences.getString(
+                CameraSettings.KEY_VOLUME_KEY_MODE,
+                mActivity.getString(R.string.pref_volume_key_mode_default));
+        mVolumeKeyMode = Integer.parseInt(volumeKeyMode);
+
+        // Set power key shutter.
+        String powerKeyShutter = mPreferences.getString(
+                CameraSettings.KEY_POWER_KEY_SHUTTER,
+                mActivity.getString(R.string.pref_power_key_shutter_default));
+        mPowerKeyShutter = powerKeyShutter.equals(
+                mActivity.getString(R.string.setting_on_value));
+        mActivity.setPowerKey(mPowerKeyShutter);
 
         mMainHandler = new Handler() {
             @Override
@@ -482,9 +499,24 @@ public class WideAnglePanoramaModule
     @Override
     public void onPreviewUILayoutChange(int l, int t, int r, int b) {
         Log.d(TAG, "layout change: " + (r - l) + "/" + (b - t));
+        boolean capturePending = false;
+        if (mCaptureState == CAPTURE_STATE_MOSAIC){
+            capturePending = true;
+        }
         mPreviewUIWidth = r - l;
         mPreviewUIHeight = b - t;
         configMosaicPreview();
+        if (capturePending == true){
+            mMainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (!mPaused){
+                        mMainHandler.removeMessages(MSG_RESET_TO_PREVIEW);
+                        startCapture();
+                    }
+                }
+            });
+        }
     }
 
     @Override
@@ -742,7 +774,8 @@ public class WideAnglePanoramaModule
         if (jpegData != null) {
             String filename = PanoUtil.createName(
                     mActivity.getResources().getString(R.string.pano_file_name_format), mTimeTaken);
-            String filepath = Storage.generateFilepath(filename);
+            String filepath = Storage.getInstance().generateFilepath(filename,
+                              PhotoModule.PIXEL_FORMAT_JPEG);
 
             UsageStatistics.onEvent(UsageStatistics.COMPONENT_PANORAMA,
                     UsageStatistics.ACTION_CAPTURE_DONE, null, 0,
@@ -761,10 +794,11 @@ public class WideAnglePanoramaModule
                 exif.writeExif(jpegData, filepath);
             } catch (IOException e) {
                 Log.e(TAG, "Cannot set exif for " + filepath, e);
-                Storage.writeFile(filepath, jpegData);
+                Storage.getInstance().writeFile(filepath, jpegData);
             }
             int jpegLength = (int) (new File(filepath).length());
-            return Storage.addImage(mContentResolver, filename, mTimeTaken, loc, orientation,
+            return Storage.getInstance().addImage(
+                    mContentResolver, filename, mTimeTaken, loc, orientation,
                     jpegLength, filepath, width, height, LocalData.MIME_TYPE_JPEG);
         }
         return null;
@@ -854,6 +888,10 @@ public class WideAnglePanoramaModule
     }
 
     @Override
+    public void resizeForPreviewAspectRatio() {
+    }
+
+    @Override
     public void onResumeBeforeSuper() {
         mPaused = false;
     }
@@ -888,7 +926,12 @@ public class WideAnglePanoramaModule
             mPreviewUIWidth = size.x;
             mPreviewUIHeight = size.y;
             configMosaicPreview();
-            mActivity.updateStorageSpaceAndHint();
+            mMainHandler.post(new Runnable(){
+                @Override
+                public void run(){
+                    mActivity.updateStorageSpaceAndHint();
+                }
+            });
         }
         keepScreenOnAwhile();
 
@@ -978,6 +1021,7 @@ public class WideAnglePanoramaModule
             // image data from SurfaceTexture.
             mCameraDevice.setDisplayOrientation(0);
 
+            if (mCameraTexture != null)
             mCameraTexture.setOnFrameAvailableListener(this);
             mCameraDevice.setPreviewTexture(mCameraTexture);
         }
@@ -1073,12 +1117,67 @@ public class WideAnglePanoramaModule
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // Do not handle any key if the activity is paused
+        // or not in active camera/video mode
+        if (mPaused) {
+            return true;
+        } else if (!mActivity.isInCameraApp()) {
+            return false;
+        }
+
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                if (event.getRepeatCount() == 0) {
+                    return handleVolumeKeyEvent(false);
+                }
+                return true;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                if (event.getRepeatCount() == 0) {
+                    return handleVolumeKeyEvent(true);
+                }
+                return true;
+            case KeyEvent.KEYCODE_POWER:
+                if (mPowerKeyShutter) {
+                    return true;
+                }
+                break;
+        }
         return false;
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_VOLUME_UP:
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                return true;
+            case KeyEvent.KEYCODE_POWER:
+                if (mPowerKeyShutter) {
+                    onShutterButtonClick();
+                    return true;
+                }
+                break;
+        }
         return false;
+    }
+
+    private boolean handleVolumeKeyEvent(boolean isVolumeDownKey) {
+        switch (mVolumeKeyMode) {
+            case CameraSettings.VKM_SHUTTER:
+                return handleShutter(true);
+            case CameraSettings.VKM_SHUTTER_FOCUS:
+                return handleShutter(isVolumeDownKey);
+            case CameraSettings.VKM_FOCUS_SHUTTER:
+                return handleShutter(!isVolumeDownKey);
+        }
+        return false;
+    }
+
+    private boolean handleShutter(boolean which) {
+        if (which) {
+            onShutterButtonClick();
+        }
+        return true;
     }
 
     @Override
