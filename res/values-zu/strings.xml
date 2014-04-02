@@ -317,49 +317,6 @@
     <string name="pref_exposure_label" msgid="2604738602400261218">"UKUBONISWA"</string>
     <!-- no translation found for pref_camera_hdr_default (5054955236904902318) -->
     <skip />
-    <string name="pref_camera_timer_sound_title" msgid="2469008631966169105">"Bhipha ngesikhathi sokubala ngokwehla"</string>
-    <string name="setting_off" msgid="4480039384202951946">"Kucishile"</string>
-    <string name="setting_on" msgid="8602246224465348901">"Kuyakhanya"</string>
-    <string name="pref_video_quality_title" msgid="8245379279801096922">"Ikhwalithi yevidiyo"</string>
-    <string name="pref_video_quality_entry_high" msgid="8664038216234805914">"Phezulu"</string>
-    <string name="pref_video_quality_entry_low" msgid="7258507152393173784">"Phansi"</string>
-    <string name="pref_video_time_lapse_frame_interval_title" msgid="6245716906744079302">"Ukudlula kwesikhathi"</string>
-    <string name="pref_camera_settings_category" msgid="2576236450859613120">"Izilungiselelo zekhamera"</string>
-    <string name="pref_camcorder_settings_category" msgid="460313486231965141">"Izilungiselelo zekhamera enerekhoda"</string>
-    <string name="pref_camera_picturesize_title" msgid="4333724936665883006">"Usayizi wesithombe"</string>
-    <string name="pref_camera_picturesize_entry_8mp" msgid="259953780932849079">"8M amaphikseli"</string>
-    <string name="pref_camera_picturesize_entry_5mp" msgid="2882928212030661159">"5M amaphikseli"</string>
-    <string name="pref_camera_picturesize_entry_3mp" msgid="741415860337400696">"3M amaphikseli"</string>
-    <string name="pref_camera_picturesize_entry_2mp" msgid="1753709802245460393">"2M amaphikseli"</string>
-    <string name="pref_camera_picturesize_entry_1_3mp" msgid="829109608140747258">"1.3M amaphikseli"</string>
-    <string name="pref_camera_picturesize_entry_1mp" msgid="1669725616780375066">"1M amaphikseli"</string>
-    <string name="pref_camera_picturesize_entry_vga" msgid="806934254162981919">"VGA"</string>
-    <string name="pref_camera_picturesize_entry_qvga" msgid="8576186463069770133">"QVGA"</string>
-    <string name="pref_camera_focusmode_title" msgid="2877248921829329127">"Imodi yefokhasi"</string>
-    <string name="pref_camera_focusmode_entry_auto" msgid="7374820710300362457">"Okuzenzakalelayo"</string>
-    <string name="pref_camera_focusmode_entry_infinity" msgid="3413922419264967552">"Kwaphakade"</string>
-    <string name="pref_camera_focusmode_entry_macro" msgid="4424489110551866161">"Imakhro"</string>
-    <string name="pref_camera_flashmode_title" msgid="2287362477238791017">"Imodi yokufulesh"</string>
-    <string name="pref_camera_flashmode_entry_auto" msgid="7288383434237457709">"Okuzenzakalelayo"</string>
-    <string name="pref_camera_flashmode_entry_on" msgid="5330043918845197616">"Vuliwe"</string>
-    <string name="pref_camera_flashmode_entry_off" msgid="867242186958805761">"Valiwe"</string>
-    <string name="pref_camera_whitebalance_title" msgid="677420930596673340">"Bhalansa ubumhlophe"</string>
-    <string name="pref_camera_whitebalance_entry_auto" msgid="6580665476983469293">"Okuzenzakalelayo"</string>
-    <string name="pref_camera_whitebalance_entry_incandescent" msgid="8856667786449549938">"Mhlophe komlilo"</string>
-    <string name="pref_camera_whitebalance_entry_daylight" msgid="2534757270149561027">"Emini"</string>
-    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="2435332872847454032">"Ukukhanya okumibalabala"</string>
-    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3531996716997959326">"Kunamafu"</string>
-    <string name="pref_camera_scenemode_title" msgid="1420535844292504016">"Imodi yesigcawu"</string>
-    <string name="pref_camera_scenemode_entry_auto" msgid="7113995286836658648">"Okuzenzakalelayo"</string>
-    <string name="pref_camera_scenemode_entry_hdr" msgid="2923388802899511784">"i-HDR"</string>
-    <string name="pref_camera_scenemode_entry_action" msgid="616748587566110484">"Isenzo"</string>
-    <string name="pref_camera_scenemode_entry_night" msgid="7606898503102476329">"Ebusuku"</string>
-    <string name="pref_camera_scenemode_entry_sunset" msgid="181661154611507212">"Ukushona kwelanga"</string>
-    <string name="pref_camera_scenemode_entry_party" msgid="907053529286788253">"Phathi"</string>
-    <string name="not_selectable_in_scene_mode" msgid="2970291701448555126">"Akukhetheki esimweni sokubuka"</string>
-    <string name="pref_exposure_title" msgid="1229093066434614811">"Isibonelelo"</string>
-    <!-- no translation found for pref_camera_hdr_default (1336869406134365882) -->
-    <skip />
     <string name="dialog_ok" msgid="6263301364153382152">"KULUNGILE"</string>
     <string name="spaceIsLow_content" product="nosdcard" msgid="4401325203349203177">"Isitoreji se-USB yakho siphelelwa yisikhala. Shintsha ilungiselelo lekhwalithi noma susa ezinye izithombe noma amanye amafayela."</string>
     <string name="spaceIsLow_content" product="default" msgid="1732882643101247179">"Ikhadi lakho le-SD liphelelwa isikhathi. Shintsha ilungiselelo lekhwalithi noma susa eminye imifanekiso noma amanye amafayela."</string>

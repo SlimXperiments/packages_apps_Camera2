@@ -318,49 +318,6 @@
     <string name="pref_exposure_label" msgid="2604738602400261218">"KIASI CHA MWANGAZA"</string>
     <!-- no translation found for pref_camera_hdr_default (5054955236904902318) -->
     <skip />
-    <string name="pref_camera_timer_sound_title" msgid="2469008631966169105">"Toa mlio wakati wa kuhesabu"</string>
-    <string name="setting_off" msgid="4480039384202951946">"Imezimwa"</string>
-    <string name="setting_on" msgid="8602246224465348901">"Imewashwa"</string>
-    <string name="pref_video_quality_title" msgid="8245379279801096922">"Ubora wa video"</string>
-    <string name="pref_video_quality_entry_high" msgid="8664038216234805914">"Juu"</string>
-    <string name="pref_video_quality_entry_low" msgid="7258507152393173784">"Chini"</string>
-    <string name="pref_video_time_lapse_frame_interval_title" msgid="6245716906744079302">"Kupita kwa muda"</string>
-    <string name="pref_camera_settings_category" msgid="2576236450859613120">"Mipangilio ya kamera"</string>
-    <string name="pref_camcorder_settings_category" msgid="460313486231965141">"Mipangilio ya kamkoda"</string>
-    <string name="pref_camera_picturesize_title" msgid="4333724936665883006">"Ukubwa wa picha"</string>
-    <string name="pref_camera_picturesize_entry_8mp" msgid="259953780932849079">"Pikseli 8M"</string>
-    <string name="pref_camera_picturesize_entry_5mp" msgid="2882928212030661159">"Pikseli 5M"</string>
-    <string name="pref_camera_picturesize_entry_3mp" msgid="741415860337400696">"Pikseli 3M"</string>
-    <string name="pref_camera_picturesize_entry_2mp" msgid="1753709802245460393">"Pikseli 2M"</string>
-    <string name="pref_camera_picturesize_entry_1_3mp" msgid="829109608140747258">"Pikseli 1.3M"</string>
-    <string name="pref_camera_picturesize_entry_1mp" msgid="1669725616780375066">"Pikseli 1M"</string>
-    <string name="pref_camera_picturesize_entry_vga" msgid="806934254162981919">"VGA"</string>
-    <string name="pref_camera_picturesize_entry_qvga" msgid="8576186463069770133">"QVGA"</string>
-    <string name="pref_camera_focusmode_title" msgid="2877248921829329127">"Hali ya kulenga"</string>
-    <string name="pref_camera_focusmode_entry_auto" msgid="7374820710300362457">"Otomatiki"</string>
-    <string name="pref_camera_focusmode_entry_infinity" msgid="3413922419264967552">"Pasipo mwisho"</string>
-    <string name="pref_camera_focusmode_entry_macro" msgid="4424489110551866161">"Makro"</string>
-    <string name="pref_camera_flashmode_title" msgid="2287362477238791017">"Hali ya mweka"</string>
-    <string name="pref_camera_flashmode_entry_auto" msgid="7288383434237457709">"Otomatiki"</string>
-    <string name="pref_camera_flashmode_entry_on" msgid="5330043918845197616">"Washa"</string>
-    <string name="pref_camera_flashmode_entry_off" msgid="867242186958805761">"Zima"</string>
-    <string name="pref_camera_whitebalance_title" msgid="677420930596673340">"Usawazishaji wa weupe"</string>
-    <string name="pref_camera_whitebalance_entry_auto" msgid="6580665476983469293">"Kioto"</string>
-    <string name="pref_camera_whitebalance_entry_incandescent" msgid="8856667786449549938">"King\'arishaji"</string>
-    <string name="pref_camera_whitebalance_entry_daylight" msgid="2534757270149561027">"Mwangaza wa mchana"</string>
-    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="2435332872847454032">"Kiakisi mwanga"</string>
-    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3531996716997959326">"Mawingu"</string>
-    <string name="pref_camera_scenemode_title" msgid="1420535844292504016">"gumzo ya mandhari"</string>
-    <string name="pref_camera_scenemode_entry_auto" msgid="7113995286836658648">"Otomatiki"</string>
-    <string name="pref_camera_scenemode_entry_hdr" msgid="2923388802899511784">"HDR"</string>
-    <string name="pref_camera_scenemode_entry_action" msgid="616748587566110484">"Kitendo"</string>
-    <string name="pref_camera_scenemode_entry_night" msgid="7606898503102476329">"Usiku"</string>
-    <string name="pref_camera_scenemode_entry_sunset" msgid="181661154611507212">"Machweo"</string>
-    <string name="pref_camera_scenemode_entry_party" msgid="907053529286788253">"Karamu"</string>
-    <string name="not_selectable_in_scene_mode" msgid="2970291701448555126">"Haiwezi kuchaguliwa ikiwa katika hali ya mandhari."</string>
-    <string name="pref_exposure_title" msgid="1229093066434614811">"Kiasi cha mwangaza"</string>
-    <!-- no translation found for pref_camera_hdr_default (1336869406134365882) -->
-    <skip />
     <string name="dialog_ok" msgid="6263301364153382152">"SAWA"</string>
     <string name="spaceIsLow_content" product="nosdcard" msgid="4401325203349203177">"Hifadhi yako ya USB inaishiwa na nafasi. Badilisha mipangilio ya ubora au futa baadhi ya picha au faili."</string>
     <string name="spaceIsLow_content" product="default" msgid="1732882643101247179">"Nafasi ya kadi yako ya SD inaelekea kuisha. Badlisha mpangilio wa ubora au futa baadhi ya picha au faili zingine."</string>
